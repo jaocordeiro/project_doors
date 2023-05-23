@@ -1,5 +1,9 @@
-export default function Doors({ selectedDoor }: any) {
-  const selectedPort = selectedDoor ? selectedDoor : "";
+import ModelDoor from "@/model/door";
+interface TypeDoor {
+  value: ModelDoor;
+}
+export default function Doors({ value }: TypeDoor) {
+  const selectedPort = value ? value : "";
   return (
     <div className="w-52 h-80 flex flex-col items-center mx-2 relative">
       <div
@@ -9,7 +13,7 @@ export default function Doors({ selectedDoor }: any) {
       >
         <div className="flex flex-col grow items-center p-4 bg-amber-800">
           <div className={`text-5xl ${selectedPort ? `text-yellow-300` : ""}`}>
-            3
+            {value.number}
           </div>
           <div
             className={`absolute self-start h-5 w-5 rounded-3xl bg-amber-900 top-[45%] ${
