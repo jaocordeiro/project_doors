@@ -1,4 +1,5 @@
 import ModelDoor from "@/model/door";
+import Gift from "../Gift";
 interface TypeDoor {
   value: ModelDoor;
   onChange: (newDoor: ModelDoor) => void;
@@ -6,8 +7,8 @@ interface TypeDoor {
 export default function Doors(props: TypeDoor) {
   const door = props.value;
   const selectedPort = door && !door.open ? door.selected : "";
-  const toggleSelection = (e) => props.onChange(door.toggleSelection());
-  const open = (e) => {
+  const toggleSelection = () => props.onChange(door.toggleSelection());
+  const open = (e: { stopPropagation: () => void }) => {
     e.stopPropagation();
     props.onChange(door.openDoor());
   };
@@ -34,11 +35,11 @@ export default function Doors(props: TypeDoor) {
       onClick={toggleSelection}
     >
       <div
-        className={`flex w-11/12 grow border-solid border-4 border-amber-900 bg-[#0005]${
+        className={`flex flex-col-reverse w-11/12 grow border-solid border-4 border-amber-900 bg-[#0005]${
           selectedPort ? `border-solid border-4 border-yellow-300` : ""
         }`}
       >
-        {door.open ? false : renderDoor()}
+        {door.close ? renderDoor() : door.haveGift ? <Gift /> : false}
       </div>
       <div className="h-3 w-full bg-gray-300"></div>
     </div>

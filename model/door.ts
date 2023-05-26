@@ -32,6 +32,10 @@ export default class ModelDoor {
     return this.#open;
   }
 
+  get close() {
+    return !this.open;
+  }
+
   deselect() {
     const selected = false;
     return new ModelDoor(this.number, this.haveGift, selected, this.open);
