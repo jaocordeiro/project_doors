@@ -1,9 +1,9 @@
 import ModelDoor from "@/model/door";
 
-export function createDoors(qtda: number, selected: number): ModelDoor[] {
+export function createDoors(qtda: number, doorWithGift: number): ModelDoor[] {
   return Array.from({ length: qtda }, (_, i) => {
     const number = i + 1;
-    const haveGift = number === selected;
+    const haveGift = number === doorWithGift;
     return new ModelDoor(number, haveGift);
   });
 }
