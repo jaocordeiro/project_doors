@@ -9,13 +9,16 @@ export default function Game() {
   const searchParams = useSearchParams();
   const [doors, setDoors] = useState([]);
 
+  const door = searchParams.get("page");
+  const order = searchParams.get("order");
+
   // useEffect(() => {
   //   const doors = +router.query.doors;
   //   const withGift = +router.query.haveGift;
   //   setDoors(createDoors(doors, withGift));
   // }, [router?.query]);
 
-  console.log("searchParams", searchParams);
+  console.log("searchParams", door, order);
 
   function renderDoors() {
     return doors.map((door) => {
